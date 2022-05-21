@@ -245,6 +245,7 @@ def main():
         tg_send(str.join(msg))
 
 if __name__ == '__main__':
+    msg = []
     username = os.environ["HOSTLOC_USERNAME"]
     password = os.environ["HOSTLOC_PASSWORD"]
     # Bark Push
