@@ -239,10 +239,10 @@ def main():
 
         print("程序执行完毕，获取积分过程结束")
         msg.append('程序执行完毕，获取积分过程结束')
-        str = '\n'
+        a = '\n'
 
-        bark_send(str.join(msg))
-        tg_send(str.join(msg))
+        bark_send(a.join(msg))
+        tg_send(a.join(msg))
 
 if __name__ == '__main__':
     msg = []
