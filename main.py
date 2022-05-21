@@ -142,8 +142,10 @@ def print_current_points(s: req_Session):
 
     if len(points) != 0:  # 确保正则匹配到了内容，防止出现数组索引越界的情况
         print("帐户当前积分：" + points[0])
+        msg.append("帐户当前积分：" + str(points[0]))
     else:
         print("无法获取帐户积分，可能页面存在错误或者未登录！")
+        msg.append("无法获取帐户积分，可能页面存在错误或者未登录！")
     time.sleep(5)
     return points
 
@@ -160,6 +162,7 @@ def get_points(s: req_Session, number_c: int):
                 res = s.get(url)
                 res.raise_for_status()
                 print("第", i + 1, "个用户空间链接访问成功")
+                msg.append("第" + str(i + 1) + "个用户空间链接访问成功")
                 time.sleep(5)  # 每访问一个链接后休眠5秒，以避免触发论坛的防CC机制
             except Exception as e:
                 print("链接访问异常：" + str(e))
@@ -210,7 +213,6 @@ def main():
     # 分割用户名和密码为列表
     user_list = username.split(",")
     passwd_list = password.split(",")
-    msg=[]
     if not username or not password:
         print("未检测到用户名或密码，请检查环境变量是否设置正确！")
     elif len(user_list) != len(passwd_list):
@@ -220,14 +222,16 @@ def main():
         print("共检测到", len(user_list), "个帐户，开始获取积分")
         print("*" * 30)
         msg.append('共检测到'+str(len(user_list))+'个帐户，开始获取积分')
+        msg.append('******************************')
 
         # 依次登录帐户获取积分，出现错误时不中断程序继续尝试下一个帐户
         for i in range(len(user_list)):
             try:
                 s = login(user_list[i], passwd_list[i])
                 get_points(s, i + 1)
-                msg.append(print_current_points(s)[0])
+                #msg.append(print_current_points(s)[0])
                 print("*" * 30)
+                msg.append('******************************')
             except Exception as e:
                 print("程序执行异常：" + str(e))
                 print("*" * 30)
@@ -235,8 +239,10 @@ def main():
 
         print("程序执行完毕，获取积分过程结束")
         msg.append('程序执行完毕，获取积分过程结束')
-        bark_send(msg)
-        tg_send(msg)
+        str = '\n'
+
+        bark_send(str.join(msg))
+        tg_send(str.join(msg))
 
 if __name__ == '__main__':
     username = os.environ["HOSTLOC_USERNAME"]
