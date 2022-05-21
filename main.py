@@ -219,7 +219,7 @@ def main():
         print_my_ip()
         print("共检测到", len(user_list), "个帐户，开始获取积分")
         print("*" * 30)
-        msg.append('共检测到'+str(len(user_list))+'个帐户，开始获取积分%0a')
+        msg.append('共检测到'+str(len(user_list))+'个帐户，开始获取积分')
 
         # 依次登录帐户获取积分，出现错误时不中断程序继续尝试下一个帐户
         for i in range(len(user_list)):
