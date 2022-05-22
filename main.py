@@ -249,7 +249,7 @@ if __name__ == '__main__':
     username = os.environ["HOSTLOC_USERNAME"]
     password = os.environ["HOSTLOC_PASSWORD"]
     # Bark Push
-    BarkKey = os.environ['BARKKEY']
+    BarkKey = os.environ['BARK_KEY']
     # TG Push
     tg_bot_token = os.environ['TG_BOT_TOKEN']
     tg_user_id = os.environ['TG_USER_ID']
