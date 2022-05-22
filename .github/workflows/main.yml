@@ -28,7 +28,7 @@ jobs:
           env:
             HOSTLOC_USERNAME: ${{ secrets.HOSTLOC_USERNAME }}
             HOSTLOC_PASSWORD: ${{ secrets.HOSTLOC_PASSWORD }}
-            BARKKEY: ${{ secrets.BARKKEY }}
+            BARK_KEY: ${{ secrets.BARK_KEY }}
             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
             TG_USER_ID: ${{ secrets.TG_USER_ID }}
             
