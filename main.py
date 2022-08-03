@@ -207,6 +207,7 @@ def tg_send(msg):
     if rq_tg.status_code == 200:
         print('TG 推送成功')
     else:
+        print('TG 推送失败')
         print(rq_tg.content.decode('utf-8'))
 
 def main():
