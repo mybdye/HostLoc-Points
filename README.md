@@ -1,5 +1,3 @@
-[![HostLoc-Points](https://github.com/mybdye/HostLoc-Points/actions/workflows/main.yml/badge.svg)](https://github.com/mybdye/HostLoc-Points/actions/workflows/main.yml)
-
 #### ㊙️ SECRET
 |SECRET NAME|SECRET VALUE                                                                                            |
 |-----|-------------------------------------------------------------------------------------------------------------|
