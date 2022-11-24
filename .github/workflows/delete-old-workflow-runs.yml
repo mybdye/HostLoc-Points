@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+name: delete-old-workflow-runs
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+  schedule:
+    # UTC (国内 UTC+8)
+    - cron: '15 16 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # 超时设置
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Delete workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        with:
+          repository: ${{ github.repository }}   # replace this with your own repository such as >> owner/repo
+          older-than-seconds: 172800          # remove all workflow runs older than 1 day >> 24*60*60=86400
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
