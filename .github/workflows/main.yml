@@ -14,11 +14,19 @@ jobs:
     
     steps:
         - name: 'Checkout codes'
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
 #         - name: 'Set up Python'
 #           uses: actions/setup-python@v2
 #           with:
 #             python-version: '3.9.10'
+
+        - name: 'Delete workflow runs'
+          uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+          with:
+            repository: ${{ github.repository }}   # replace this with your own repository such as >> owner/repo
+            older-than-seconds: 172800          # remove all workflow runs older than 1 day >> 24*60*60=86400
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         - name: 'Install requirements'
           run: |
