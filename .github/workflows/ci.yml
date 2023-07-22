@@ -1,0 +1,29 @@
+# thanks https://github.com/justjavac/auto-green
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 15 * *"
+
+jobs:
+  autogreen:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+  
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Auto-commit keeps workflow running
+        run: |
+          git config --local user.email "abc@gmail.com"
+          git config --local user.name "${{ github.actor }}"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git pull --rebase
+          git commit --allow-empty -m "a commit a day keeps your girlfriend away"
+          git push
