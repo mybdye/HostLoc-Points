@@ -1,5 +1,5 @@
 # thanks https://github.com/justjavac/auto-green
-name: ci
+name: auto-commit
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     - cron: "0 0 15 * *"
 
 jobs:
-  autogreen:
+  auto-commit:
     runs-on: ubuntu-latest
     
     permissions:
