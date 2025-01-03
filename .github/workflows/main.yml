@@ -1,7 +1,9 @@
 name: 'HostLoc-Points'
  
 on:
-  #push:
+  push:
+    branches:
+      - main
   schedule:
     # UTC (国内 UTC+8)
      - cron: '21 1 * * *'
