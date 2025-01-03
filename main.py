@@ -116,7 +116,6 @@ def login(username: str, password: str) -> req_Session:
 def check_login_status(s: req_Session, number_c: int) -> bool:
     test_url = "https://hostloc.com/home.php?mod=spacecp"
     res = s.get(test_url)
-    time.sleep(5)
     res.raise_for_status()
     res.encoding = "utf-8"
     test_title = re.findall("<title>(.*?)<\/title>", res.text)
