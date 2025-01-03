@@ -108,6 +108,7 @@ def login(username: str, password: str) -> req_Session:
     s.headers.update(headers)
     s.cookies.update(gen_anti_cc_cookies())
     res = s.post(url=login_url, data=login_data)
+    delay(5000)
     res.raise_for_status()
     return s
 
